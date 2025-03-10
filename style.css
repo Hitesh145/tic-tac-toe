@@ -1,14 +1,9 @@
-.container{
-    /* background-color: aqua; */
-    width: 80vw;
-    height: 80vh;
-    /* border: solid black 2px ; */
 
+.container{
     display:  grid ;
     grid-template-columns: 1fr 1fr 1fr ;
     grid-template-rows: 1fr 1fr 1fr ;
-    /* justify-content: space-around; */
-    /* grid-row: 3 ; */
+
 }
 
 .center{
@@ -19,12 +14,15 @@
   }
 
 .box{
-    /* padding: 10px; */
     text-align: center;
     align-content: center;
     border-right : solid black 5px ;
     border-bottom : solid black 5px ;
-    /* width: 200px; */
+    width: 10vw;
+    height: 10vw;
+  }
+  .box :hover{
+    background-color: #f1f1f1;
   }
 .box-3 , .box-6 , .box-9 {
     border-right : none;
@@ -35,12 +33,16 @@
   }
 
   .btn{
-    width: 150px; ;
-    height: 150px;
-    /* margin: 0 35px; */
-    font-size: 20vh;
-    /* border-radius: 75px; */
-    background: transparent;
+    width: 10vw; 
+    height: 10vw;
+    font-size: 8vw;
+    background: none ;
     border: none;
     cursor: pointer;
   }
+  /* .btn:hover{
+    background-color: #f1f1f1;
+  }  */
+  /* .btn:active{
+    background-color: #f1f1f1;
+  } */

@@ -1,7 +1,7 @@
 function updateScore() {
     document.querySelector(".game-score").innerHTML = `Player 1 : ${score.PLAYER_1}, Player 2 : ${score.PLAYER_2}, Draws : ${score.DRAWS}`;
 }
-// creatin a local storage for score record 
+// creating a local storage for score record 
 let score = JSON.parse(localStorage.getItem('score'));
 if (score === null) {
     let score = {
@@ -10,18 +10,7 @@ if (score === null) {
         DRAWS: 0
     }
 }
-localStorage.setItem('score', JSON.stringify(score));
-localStorage.getItem('score');
 updateScore();
-
-
-
-
-
-
-
-
-
 
 
 
@@ -32,6 +21,7 @@ let board = [
     [-1, -1, -1]
 ];
 
+// function to increase the score of the player
 function scoreinc(p) {
     if (p === 0) {
         score.PLAYER_1 = score.PLAYER_1 + 1;
@@ -43,27 +33,22 @@ function scoreinc(p) {
     }
 }
 
+// function to check the diagonal win
 function diagWin(p) {
     return (board[0][0] === board[2][2] && board[0][0] === board[1][1]) || (board[2][0] === board[0][2] && board[2][0] === board[1][1]);
 }
 
-function show() {
-    for (let i of board) {
-        for (let j of i) {
-            console.log(j + " ");
-        }
-        console.log();
-    }
-}
-
+// function to change the turn of the player
 function turn(p) {
     return p === 0 ? 1 : 0;
 }
 
+// function to check the row win
 function rowWin(r) {
     return board[r][0] === board[r][1] && board[r][1] === board[r][2];
 }
 
+// function to check the column win
 function colWin(c) {
     return board[0][c] === board[1][c] && board[1][c] === board[2][c];
 }
@@ -72,8 +57,7 @@ gameon = true
 let p = 0;
 let t = 0;
 
-
-
+// function to start the game
 function game(r, c) {
 
     let row = r - 1;
@@ -86,7 +70,7 @@ function game(r, c) {
         if (diagWin(p)) {
             gameon = false;
             let txt = document.querySelector(".winner");
-            txt.innerHTML = `Player ${p} wins`;
+            txt.innerHTML = `Player ${p + 1} wins`;
             scoreinc(p);
             updateScore();
             container.appendChild(txt);
@@ -97,7 +81,7 @@ function game(r, c) {
         if (rowWin(row) || colWin(col)) {
             gameon = false;
             let txt = document.querySelector(".winner");
-            txt.innerHTML = `Player ${p} wins`;
+            txt.innerHTML = `Player ${p + 1} wins`;
             scoreinc(p);
             updateScore();
             container.appendChild(txt);
@@ -132,14 +116,6 @@ function putsign(x) {
 }
 
 
-function selected(row, col) {
-    var container = document.querySelector(".container");
-    console.log("You have selected row " + row + " and column " + col);
-    putsign(p);
-    game(row, col);
-
-}
-
 
 document.querySelector(".container").addEventListener("click", function (e) {
     if (e.target.tagName === "BUTTON") {
@@ -153,7 +129,6 @@ document.querySelector(".container").addEventListener("click", function (e) {
             e.target.innerHTML = putsign(p);
             e.target.disabled = true;
             let coler = p === 0 ? "red" : "blue";
-            e.target.style.backgroundColor = "white";
             e.target.style.color = coler;
         }
     }
@@ -161,7 +136,7 @@ document.querySelector(".container").addEventListener("click", function (e) {
 );
 
 
-
+// function to reset the game board
 function reset() {
     board = [
         [-1, -1, -1],
@@ -175,7 +150,6 @@ function reset() {
     for (let button of buttons) {
         button.innerHTML = "";
         button.disabled = false;
-        button.style.backgroundColor = "white";
     }
     document.querySelector(".winner").innerHTML = "";
 }
