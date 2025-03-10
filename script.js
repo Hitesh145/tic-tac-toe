@@ -1,6 +1,3 @@
-function updateScore() {
-    document.querySelector(".game-score").innerHTML = `Player 1 : ${score.PLAYER_1}, Player 2 : ${score.PLAYER_2}, Draws : ${score.DRAWS}`;
-}
 // creating a local storage for score record 
 let score = JSON.parse(localStorage.getItem('score'));
 if (score === null) {
@@ -10,10 +7,13 @@ if (score === null) {
         DRAWS: 0
     }
 }
+
+
+function updateScore() {
+    document.querySelector(".game-score").innerHTML = `Player 1 : ${score.PLAYER_1}, Player 2 : ${score.PLAYER_2}, Draws : ${score.DRAWS}`;
+}
+
 updateScore();
-
-
-
 var container = document.querySelector(".container");
 let board = [
     [-1, -1, -1],
