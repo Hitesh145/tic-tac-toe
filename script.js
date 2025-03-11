@@ -1,18 +1,20 @@
+// creating a local storage for score record 
+let score = {
+    PLAYER_1: 0,
+    PLAYER_2: 0,
+    DRAWS: 0
+}
+let sc = JSON.parse(localStorage.getItem('score'));
+if (sc) {
+    score = sc;
+}
+
+
 function updateScore() {
+    console.log(score);
     document.querySelector(".game-score").innerHTML = `Player 1 : ${score.PLAYER_1}, Player 2 : ${score.PLAYER_2}, Draws : ${score.DRAWS}`;
 }
-// creating a local storage for score record 
-let score = JSON.parse(localStorage.getItem('score'));
-if (score === null) {
-    let score = {
-        PLAYER_1: 0,
-        PLAYER_2: 0,
-        DRAWS: 0
-    }
-}
 updateScore();
-
-
 
 var container = document.querySelector(".container");
 let board = [
@@ -72,7 +74,7 @@ function game(r, c) {
             let txt = document.querySelector(".winner");
             txt.innerHTML = `Player ${p + 1} wins`;
             scoreinc(p);
-            updateScore();
+            updateScore(score);
             container.appendChild(txt);
         }
     }
@@ -83,7 +85,7 @@ function game(r, c) {
             let txt = document.querySelector(".winner");
             txt.innerHTML = `Player ${p + 1} wins`;
             scoreinc(p);
-            updateScore();
+            updateScore(score);
             container.appendChild(txt);
         }
     }
@@ -98,7 +100,7 @@ function game(r, c) {
         gameon = false;
         score.DRAWS++;
         localStorage.setItem('score', JSON.stringify(score));
-        updateScore();
+        updateScore(score);
         container.appendChild(txt);
     }
 }
