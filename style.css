@@ -3,6 +3,8 @@
     display:  grid ;
     grid-template-columns: 1fr 1fr 1fr ;
     grid-template-rows: 1fr 1fr 1fr ;
+    width: max(40vw, 300px);
+    height: max(40vw, 300px);
 
 }
 
@@ -18,8 +20,6 @@
     align-content: center;
     border-right : solid black 5px ;
     border-bottom : solid black 5px ;
-    width: 10vw;
-    height: 10vw;
   }
   .box :hover{
     background-color: #f1f1f1;
@@ -33,16 +33,10 @@
   }
 
   .btn{
-    width: 10vw; 
-    height: 10vw;
-    font-size: 8vw;
+    width: max(10vw, 80px); 
+    height: max(10vw, 80px);
+    font-size: max(10vw, 80px);
     background: none ;
     border: none;
     cursor: pointer;
   }
-  /* .btn:hover{
-    background-color: #f1f1f1;
-  }  */
-  /* .btn:active{
-    background-color: #f1f1f1;
-  } */
