@@ -14,7 +14,15 @@ function updateScore() {
     console.log(score);
     document.querySelector(".game-score").innerHTML = `Player 1 : ${score.PLAYER_1}, Player 2 : ${score.PLAYER_2}, Draws : ${score.DRAWS}`;
 }
+
+
+function updateScore() {
+    document.querySelector(".game-score").innerHTML = `Player 1 : ${score.PLAYER_1}, Player 2 : ${score.PLAYER_2}, Draws : ${score.DRAWS}`;
+}
+
 updateScore();
+
+
 
 var container = document.querySelector(".container");
 let board = [
